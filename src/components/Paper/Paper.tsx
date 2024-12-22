@@ -6,7 +6,7 @@ export interface PaperProps
     React.HTMLAttributes<HTMLDivElement>,
     HTMLDivElement
   > {
-  elevation?: 1 | 2 | 3 | 4 | 5
+  elevation?: boolean
   borderRadius?: 2 | 4 | 8 | 12 | 16
   className?: string
   children?: React.ReactNode
@@ -24,7 +24,7 @@ export const Paper = (props: PaperProps) => {
   const rootClassName = joinClassNames(
     className,
     styles[`border_${borderRadius}`],
-    styles[`elevation_${elevation}`]
+    elevation ? styles.elevation : ''
   )
 
   return (

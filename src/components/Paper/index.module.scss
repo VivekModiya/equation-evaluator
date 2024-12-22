@@ -17,18 +17,7 @@
   border-radius: var(--borderRadius-16);
 }
 
-.elevation_1 {
-  box-shadow: var(--boxShadow-100);
-}
-.elevation_2 {
-  box-shadow: var(--boxShadow-200);
-}
-.elevation_3 {
-  box-shadow: var(--boxShadow-300);
-}
-.elevation_4 {
-  box-shadow: var(--boxShadow-400);
-}
-.elevation_5 {
-  box-shadow: var(--boxShadow-500);
+.elevation {
+  box-shadow: 0px 4px 8px hsl(var(--neutralRaw-1000) / 0.05),
+    0px 0px 8px hsl(var(--neutralRaw-1000) / 0.05);
 }
