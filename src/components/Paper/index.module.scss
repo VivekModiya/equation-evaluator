@@ -1,0 +1,34 @@
+.border_2 {
+  border-radius: var(--borderRadius-2);
+}
+.border_4 {
+  border-radius: var(--borderRadius-4);
+}
+.border_6 {
+  border-radius: var(--borderRadius-6);
+}
+.border_8 {
+  border-radius: var(--borderRadius-8);
+}
+.border_12 {
+  border-radius: var(--borderRadius-12);
+}
+.border_16 {
+  border-radius: var(--borderRadius-16);
+}
+
+.elevation_1 {
+  box-shadow: var(--boxShadow-100);
+}
+.elevation_2 {
+  box-shadow: var(--boxShadow-200);
+}
+.elevation_3 {
+  box-shadow: var(--boxShadow-300);
+}
+.elevation_4 {
+  box-shadow: var(--boxShadow-400);
+}
+.elevation_5 {
+  box-shadow: var(--boxShadow-500);
+}
