@@ -1,5 +1,12 @@
+import { CssBaseline } from '../components/CssBaseLine'
+
 function App() {
-  return <h1>Hello there !</h1>
+  return (
+    <>
+      <CssBaseline />
+      <h1 style={{ backgroundColor: 'var(--neutral-200)' }}>Hello</h1>
+    </>
+  )
 }
 
 export default App

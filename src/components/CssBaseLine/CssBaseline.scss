@@ -1,0 +1,206 @@
+/* RESET CSS */
+/*
+  1. Use a more-intuitive box-sizing model.
+*/
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/*
+  2. Remove default margin
+*/
+* {
+  margin: 0;
+}
+
+/*
+  3. Allow percentage-based heights in the application
+*/
+html,
+body,
+#root {
+  width: 100%;
+  height: 100%;
+}
+
+/*
+  Typographic tweaks!
+  4. Add accessible line-height
+  5. Improve text rendering
+*/
+body {
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+/*
+  6. Improve media defaults
+*/
+/* img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+} */
+
+/*
+  7. Remove built-in form typography styles
+*/
+input,
+button,
+textarea,
+select {
+  font: inherit;
+  line-height: 1.2;
+}
+
+/*
+  8. Avoid text overflows
+*/
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+}
+
+/*
+  9. Create a root stacking context
+*/
+#root {
+  isolation: isolate;
+  
+  /* Neutral Colors */
+  // #121212
+  --neutralRaw-1000: 0deg 0% 7%;
+  --neutral-1000: hsl(var(--neutralRaw-1000));
+  // #4D4D4D
+  --neutralRaw-600: 0deg 0% 30%;
+  --neutral-600: hsl(var(--neutralRaw-600));
+  // #666666
+  --neutralRaw-500: 0deg 0% 40%;
+  --neutral-500: hsl(var(--neutralRaw-500));
+  // #999999
+  --neutralRaw-400: 0deg 0% 60%;
+  --neutral-400: hsl(var(--neutralRaw-400));
+  // #CCCCCC
+  --neutralRaw-300: 0deg 0% 80%;
+  --neutral-300: hsl(var(--neutralRaw-300));
+  // #E6E6E6
+  --neutralRaw-200: 0deg 0% 90%;
+  --neutral-200: hsl(var(--neutralRaw-200));
+  // #F2F2F2
+  --neutralRaw-100: 0deg 0% 95%;
+  --neutral-100: hsl(var(--neutralRaw-100));
+  // #FAFAFA
+  --neutralRaw-75: 0deg 0% 98%;
+  --neutral-75: hsl(var(--neutralRaw-75));
+  // #FFFFFF
+  --neutralRaw-0: 0deg 0% 100%;
+  --neutral-0: hsl(var(--neutralRaw-0));
+}
+
+/* GLOBAL CSS */
+:root {
+  --font-sans-serif: 'Avenir Next LT', system-ui, -apple-system, 'Segoe UI',
+    Roboto, 'Helvetica Neue', Arial, 'Noto Sans', 'Liberation Sans', sans-serif,
+    'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+
+  /* Font Sizes */
+  --fs-12: calc(12rem / 16);
+  --fs-14: calc(14rem / 16);
+  --fs-16: calc(16rem / 16);
+  --fs-18: calc(18rem / 16);
+  --fs-20: calc(20rem / 16);
+  --fs-24: calc(24rem / 16);
+  --fs-26: calc(26rem / 16);
+  --fs-32: calc(32rem / 16);
+  --fs-36: calc(36rem / 16);
+  --fs-40: calc(40rem / 16);
+  --fs-48: calc(48rem / 16);
+  --fs-56: calc(56rem / 16);
+  --fs-64: calc(64rem / 16);
+  --fs-80: calc(80rem / 16);
+
+  /* Font Weights */
+  --fw-normal: 400;
+  --fw-demi: 600;
+  --fw-bold: 700;
+
+  /* Line Heights */
+  --lh-single-line: 1.2;
+  --lh-multi-line: 1.4;
+
+  /* Gutter Spaces */
+  --gutter-0: 0;
+  --gutter-2: 2px;
+  --gutter-4: 4px;
+  --gutter-8: 8px;
+  --gutter-12: 12px;
+  --gutter-16: 16px;
+  --gutter-24: 24px;
+  --gutter-32: 32px;
+  --gutter-40: 40px;
+  --gutter-48: 48px;
+  --gutter-56: 56px;
+  --gutter-64: 64px;
+
+  /* Border Radius */
+  --borderRadius-0: 0;
+  --borderRadius-2: 2px;
+  --borderRadius-4: 4px;
+  --borderRadius-8: 8px;
+  --borderRadius-16: 16px;
+
+  /* Elevations */
+  --boxShadow-0: none;
+  --boxShadow-100: 0px 0px 2px hsl(var(--neutralRaw-1000) / 0.05),
+    0px 0px 4px hsl(var(--neutralRaw-1000) / 0.05);
+  --boxShadow-200: 0px 4px 8px hsl(var(--neutralRaw-1000) / 0.05),
+    0px 0px 8px hsl(var(--neutralRaw-1000) / 0.05);
+  --boxShadow-300: 0px 8px 16px hsl(var(--neutralRaw-1000) / 0.05),
+    0px 0px 8px hsl(var(--neutralRaw-1000) / 0.05);
+  --boxShadow-400: 0px 12px 24px hsl(var(--neutralRaw-1000) / 0.05),
+    0px 0px 8px hsl(var(--neutralRaw-1000) / 0.05);
+  --boxShadow-500: 0px 16px 32px hsl(var(--neutralRaw-1000) / 0.05),
+    0px 0px 8px hsl(var(--neutralRaw-1000) / 0.05);
+
+  /* Z-indexes */
+  --zindex-dropdown: 1000;
+  --zindex-sticky: 1100;
+  --zindex-fixed: 1200;
+  --zindex-modal-backdrop: 1300;
+  --zindex-drawer: 1400;
+  --zindex-modal: 1500;
+  --zindex-popover: 1600;
+  --zindex-tooltip: 1700;
+
+  /* Opacity */
+  --opacityDisabled: 0.4;
+}
+
+html {
+  /* Produces 1rem. Equivalent to 16px */
+  --base: 16rem;
+  font-size: calc(var(--base) / 16);
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-sans-serif);
+  font-size: var(--fs-14);
+  font-weight: var(--fw-normal);
+  line-height: var(--lh-multi-line);
+  letter-spacing: calc(0.2rem / 16);
+  color: var(--neutral-1000);
+  background-color: var(--neutral-0);
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent;
+}
