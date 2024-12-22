@@ -76,7 +76,39 @@ h6 {
 */
 #root {
   isolation: isolate;
-  
+
+  /* Primary Colors */
+  // #0C275E
+  --primaryRaw-800: 220deg 77% 21%;
+  --primary-800: hsl(var(--primaryRaw-800));
+  // #123787
+  --primaryRaw-700: 221deg 76% 30%;
+  --primary-700: hsl(var(--primaryRaw-700));
+  // #134AC1
+  --primaryRaw-600: 221deg 82% 42%;
+  --primary-600: hsl(var(--primaryRaw-600));
+  // #346EEC
+  --primaryRaw-500: 221deg 83% 56%;
+  --primary-500: hsl(var(--primaryRaw-500));
+  // #4F84F7
+  --primaryRaw-400: 221deg 91% 64%;
+  --primary-400: hsl(var(--primaryRaw-400));
+  // #78A1FC
+  --primaryRaw-300: 221deg 96% 73%;
+  --primary-300: hsl(var(--primaryRaw-300));
+  // #B1CAFE
+  --primaryRaw-200: 221deg 97% 85%;
+  --primary-200: hsl(var(--primaryRaw-200));
+  // #D2E0FE
+  --primaryRaw-100: 221deg 96% 91%;
+  --primary-100: hsl(var(--primaryRaw-100));
+  // #E2EBFF
+  --primaryRaw-75: 221deg 100% 94%;
+  --primary-75: hsl(var(--primaryRaw-75));
+  // #F2F6FF
+  --primaryRaw-50: 221deg 100% 97%;
+  --primary-50: hsl(var(--primaryRaw-50));
+
   /* Neutral Colors */
   // #121212
   --neutralRaw-1000: 0deg 0% 7%;
@@ -105,6 +137,64 @@ h6 {
   // #FFFFFF
   --neutralRaw-0: 0deg 0% 100%;
   --neutral-0: hsl(var(--neutralRaw-0));
+
+  /* Semantics Colors - Success */
+  // #003B27
+  --successRaw-700: 160deg 100% 12%;
+  --success-700: hsl(var(--successRaw-700));
+  // #00593B
+  --successRaw-600: 160deg 100% 17%;
+  --success-600: hsl(var(--successRaw-600));
+  // #007B51
+  --successRaw-500: 160deg 100% 24%;
+  --success-500: hsl(var(--successRaw-500));
+  // #15B881
+  --successRaw-400: 160deg 80% 40%;
+  --success-400: hsl(var(--successRaw-400));
+  // #3DCB9C
+  --successRaw-300: 160deg 58% 52%;
+  --success-300: hsl(var(--successRaw-300));
+  // #71DFBB
+  --successRaw-200: 160deg 59% 63%;
+  --success-200: hsl(var(--successRaw-200));
+  // #8EE6C9
+  --successRaw-100: 160deg 64% 73%;
+  --success-100: hsl(var(--successRaw-100));
+  // #B0EFDA
+  --successRaw-75: 160deg 66% 81%;
+  --success-75: hsl(var(--successRaw-75));
+  // #ECFFFD
+  --successRaw-50: 174deg 100% 96%;
+  --success-50: hsl(var(--successRaw-50));
+
+  /* Semantics Colors - error */
+  // #8C0000
+  --errorRaw-700: 0deg 100% 27%;
+  --error-700: hsl(var(--errorRaw-700));
+  // #B30000
+  --errorRaw-600: 0deg 100% 35%;
+  --error-600: hsl(var(--errorRaw-600));
+  // #CC0909
+  --errorRaw-500: 0deg 92% 42%;
+  --error-500: hsl(var(--errorRaw-500));
+  // #E53E3E
+  --errorRaw-400: 0deg 77% 57%;
+  --error-400: hsl(var(--errorRaw-400));
+  // #EE6969
+  --errorRaw-300: 0deg 80% 67%;
+  --error-300: hsl(var(--errorRaw-300));
+  // #F29696
+  --errorRaw-200: 0deg 78% 77%;
+  --error-200: hsl(var(--errorRaw-200));
+  // #F9C5C5
+  --errorRaw-100: 0deg 81% 87%;
+  --error-100: hsl(var(--errorRaw-100));
+  // #FCDEDE
+  --errorRaw-75: 0deg 83% 93%;
+  --error-75: hsl(var(--errorRaw-75));
+  // #FFF2F2
+  --errorRaw-50: 0deg 100% 98%;
+  --error-50: hsl(var(--errorRaw-50));
 }
 
 /* GLOBAL CSS */

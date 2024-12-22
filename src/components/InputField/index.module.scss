@@ -1,0 +1,79 @@
+.root {
+  width: 100%;
+  max-width: 250px;
+  --border-color: var(--neutral-300);
+  --border-color-focused: var(--primary-500);
+  --font-size: var(--fs-16);
+  --padding: var(--gutter-8);
+}
+
+.size_small {
+  --font-size: var(--fs-14);
+  --padding: var(--gutter-4);
+}
+.size_medium {
+  --font-size: var(--fs-16);
+  --padding: var(--gutter-8);
+}
+.size_large {
+  --font-size: var(--fs-18);
+  --padding: var(--gutter-12);
+}
+
+.inputFieldWrapper {
+  padding: var(--padding);
+  font-size: var(--font-size);
+  display: flex;
+  flex-direction: row;
+  gap: var(--gutter-8);
+}
+.label {
+  font-size: var(--font-size);
+  padding: 0 var(--padding);
+}
+
+.full_width {
+  max-width: 100%;
+}
+
+.input {
+  width: 100%;
+  border: none;
+  outline: none;
+}
+
+.disabled {
+  opacity: var(--opacityDisabled);
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.border_outlined {
+  border: 2px solid var(--border-color);
+  border-radius: var(--borderRadius-8);
+  &:focus-within {
+    border: 2px solid var(--border-color-focused);
+  }
+}
+
+.color_primary {
+  --border-color-focused: var(--primary-500);
+}
+
+.color_secondary {
+  --border-color-focused: var(--neutral-500);
+}
+
+.color_error {
+  --border-color: var(--error-500);
+  --border-color-focused: var(--error-500);
+}
+
+.color_success {
+  --border-color-focused: var(--success-500);
+}
+
+.helperTextColorError {
+  color: var(--error-500);
+  font-size: calc(var(--font-size) - 2px);
+}
