@@ -1,0 +1,5 @@
+lib
+build
+dist
+node_modules
+.husky
