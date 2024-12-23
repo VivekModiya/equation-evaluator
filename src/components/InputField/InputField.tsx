@@ -119,7 +119,7 @@ export const InputField = (props: InputFieldProps) => {
       <div className={wrapperClassName}>
         {startAdornment && startAdornment}
         <input
-          value={value}
+          value={onChange ? value : undefined}
           className={styles.input}
           disabled={disabled}
           onChange={_onChange}
