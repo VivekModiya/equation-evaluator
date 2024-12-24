@@ -1,8 +1,9 @@
-import { InputField, Paper, Typography } from '../../components'
-import DotGridIcon from '../../assets/dotGridIcon.svg'
-import styles from './index.module.scss'
 import { Input } from './Input'
 import { Output } from './Output'
+import styles from './index.module.scss'
+import DotGridIcon from '../../assets/dotGridIcon.svg'
+import { InputField, Paper, Typography } from '../../components'
+import { DisabledSelectMenu } from '../../components/DisabledSelectMenu'
 
 export interface CardProps {
   inputValue: number
@@ -18,7 +19,7 @@ export const Card = (props: CardProps) => {
     <Paper className={styles.root}>
       <div className={styles.title}>
         <img src={DotGridIcon} width={20} className={styles.icon} />
-        <Typography weight="demi" color="neutral-400">
+        <Typography fontSize={16} weight="demi" color="neutral-400">
           {title}
         </Typography>
       </div>
@@ -27,8 +28,9 @@ export const Card = (props: CardProps) => {
         className={styles.equationInputField}
         fullWidth
       />
-      <InputField
-        label="Equation"
+      <DisabledSelectMenu
+        label="Next function"
+        placeholder="Function: 2"
         className={styles.nextFunctionInputField}
         fullWidth
       />

@@ -4,7 +4,7 @@ import { Typography } from '../../components'
 
 export const Input = () => {
   return (
-    <div className={styles.inputCircle}>
+    <div className={styles.input}>
       <Circle />
       <Typography>input</Typography>
     </div>

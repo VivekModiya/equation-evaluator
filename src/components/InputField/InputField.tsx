@@ -76,6 +76,12 @@ export interface InputFieldProps {
    * Common use cases include icons or buttons (e.g., a clear button, or a password visibility toggle).
    */
   endAdornment?: React.ReactNode
+  placeholder?: string
+  classes?: {
+    root?: string
+    wrapper?: string
+    input?: string
+  }
 }
 import { joinClassNames } from '../../utils/joinClassNames'
 import styles from './index.module.scss'
@@ -95,6 +101,8 @@ export const InputField = (props: InputFieldProps) => {
     helperText = '',
     startAdornment,
     endAdornment,
+    placeholder,
+    classes,
   } = props
 
   const rootClassName = joinClassNames(
@@ -103,28 +111,35 @@ export const InputField = (props: InputFieldProps) => {
     styles[`color_${error ? 'error' : color}`],
     fullWidth ? styles.full_width : null,
     disabled ? styles.disabled : null,
-    className
+    className,
+    classes?.root
   )
 
   const wrapperClassName = joinClassNames(
     styles[`border_outlined`],
-    styles.inputFieldWrapper
+    styles.inputFieldWrapper,
+    classes?.wrapper
   )
+
+  const inputClassName = joinClassNames(classes?.input, styles.input)
 
   const _onChange = disabled === false ? onChange : () => null
 
   return (
     <div className={rootClassName}>
-      {label && <label className={styles.label}>{label}</label>}{' '}
+      {label}
       <div className={wrapperClassName}>
         {startAdornment && startAdornment}
-        <input
-          value={onChange ? value : undefined}
-          className={styles.input}
-          disabled={disabled}
-          onChange={_onChange}
-          {...inputProps}
-        />
+        <div className={wrapperClassName}>
+          <input
+            value={onChange ? value : undefined}
+            className={inputClassName}
+            disabled={disabled}
+            onChange={_onChange}
+            placeholder={placeholder}
+            {...inputProps}
+          />
+        </div>
         {endAdornment && endAdornment}
       </div>
       {helperText && (

@@ -8,24 +8,26 @@
 }
 
 .size_small {
-  --font-size: var(--fs-14);
+  --font-size: var(--fs-12);
   --padding: var(--gutter-4);
 }
 .size_medium {
-  --font-size: var(--fs-16);
-  --padding: var(--gutter-8);
+  --font-size: var(--fs-14);
+  --padding: var(--gutter-8) var(--gutter-12);
 }
 .size_large {
   --font-size: var(--fs-18);
-  --padding: var(--gutter-12);
+  --padding: var(--gutter-12) calc(var(--gutter-16) + var(--gutter-4));
 }
 
 .inputFieldWrapper {
   padding: var(--padding);
   font-size: var(--font-size);
   display: flex;
+  align-items: center;
   flex-direction: row;
   gap: var(--gutter-8);
+  background-color: var(--neutral-0);
 }
 .label {
   font-size: var(--font-size);
@@ -51,9 +53,6 @@
 .border_outlined {
   border: 2px solid var(--border-color);
   border-radius: var(--borderRadius-8);
-  &:focus-within {
-    border: 2px solid var(--border-color-focused);
-  }
 }
 
 .color_primary {

@@ -1,0 +1,24 @@
+.inputFieldWrapper {
+  border: 2px solid #ffc267;
+  border-radius: var(--borderRadius-16);
+  width: 140px;
+  padding-right: var(--gutter-12);
+}
+
+.label {
+  background-color: #e29a2d;
+  padding: var(--gutter-4) var(--gutter-12);
+  color: var(--neutral-0);
+  border-radius: var(--borderRadius-16);
+  margin-bottom: calc(var(--gutter-4) + var(--gutter-2));
+  display: inline-block;
+}
+
+.root {
+  max-width: fit-content;
+  margin: var(--gutter-8);
+}
+
+.input {
+  font-weight: var(--fw-demi);
+}

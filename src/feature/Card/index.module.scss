@@ -1,9 +1,11 @@
 .root {
-  padding: var(--gutter-16) calc(var(--gutter-16) + var(--gutter-4));
+  padding: var(--gutter-24);
   width: var(--card-width);
   display: flex;
   flex-direction: column;
   gap: var(--gutter-24);
+  border: 1px solid var(--neutral-300);
+  background-color: var(--neutral-0);
 
   .title {
     display: flex;
@@ -11,23 +13,8 @@
     width: 100;
   }
 
-  .outerCircle {
-    width: var(--gutter-16);
-    aspect-ratio: 1/1;
-    border-radius: 50%;
-    border: 2px solid var(--neutral-300);
-    padding: var(--gutter-2);
-  }
-
-  .innerCircle {
-    width: 100%;
-    height: 100%;
-    border-radius: 50%;
-    background-color: var(--primary-300);
-  }
-
-  .inputCircle,
-  .outputCircle {
+  .input,
+  .output {
     display: flex;
     align-items: center;
     gap: var(--gutter-4);
@@ -35,8 +22,25 @@
 
   .inputOutputContainer {
     display: flex;
+    flex-shrink: 0;
     align-items: center;
     justify-content: space-between;
     margin-top: var(--gutter-24);
   }
+}
+
+.outerCircle {
+  width: var(--gutter-16);
+  height: var(--gutter-16);
+  aspect-ratio: 1/1;
+  border-radius: 50%;
+  border: 2px solid var(--neutral-300);
+  padding: var(--gutter-2);
+}
+
+.innerCircle {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background-color: var(--primary-300);
 }
