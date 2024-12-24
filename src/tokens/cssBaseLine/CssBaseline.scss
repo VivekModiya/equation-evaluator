@@ -1,0 +1,459 @@
+/* RESET CSS */
+/*
+  1. Use a more-intuitive box-sizing model.
+*/
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/*
+  2. Remove default margin
+*/
+* {
+  margin: 0;
+}
+
+/*
+  3. Allow percentage-based heights in the application
+*/
+html,
+body,
+#root {
+  width: 100%;
+  height: 100%;
+}
+
+/*
+  Typographic tweaks!
+  4. Add accessible line-height
+  5. Improve text rendering
+*/
+body {
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+/*
+  6. Improve media defaults
+*/
+/* img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+} */
+
+/*
+  7. Remove built-in form typography styles
+*/
+input,
+button,
+textarea,
+select {
+  font: inherit;
+  line-height: 1.2;
+}
+
+/*
+  8. Avoid text overflows
+*/
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+}
+
+/*
+  9. Create a root stacking context
+*/
+#root {
+  isolation: isolate;
+}
+
+/* GLOBAL CSS */
+:root {
+  /* Primary Colors */
+  // #0C275E
+  --primaryRaw-800: 220deg 77% 21%;
+  --primary-800: hsl(var(--primaryRaw-800));
+  // #123787
+  --primaryRaw-700: 221deg 76% 30%;
+  --primary-700: hsl(var(--primaryRaw-700));
+  // #134AC1
+  --primaryRaw-600: 221deg 82% 42%;
+  --primary-600: hsl(var(--primaryRaw-600));
+  // #346EEC
+  --primaryRaw-500: 221deg 83% 56%;
+  --primary-500: hsl(var(--primaryRaw-500));
+  // #4F84F7
+  --primaryRaw-400: 221deg 91% 64%;
+  --primary-400: hsl(var(--primaryRaw-400));
+  // #78A1FC
+  --primaryRaw-300: 221deg 96% 73%;
+  --primary-300: hsl(var(--primaryRaw-300));
+  // #B1CAFE
+  --primaryRaw-200: 221deg 97% 85%;
+  --primary-200: hsl(var(--primaryRaw-200));
+  // #D2E0FE
+  --primaryRaw-100: 221deg 96% 91%;
+  --primary-100: hsl(var(--primaryRaw-100));
+  // #E2EBFF
+  --primaryRaw-75: 221deg 100% 94%;
+  --primary-75: hsl(var(--primaryRaw-75));
+  // #F2F6FF
+  --primaryRaw-50: 221deg 100% 97%;
+  --primary-50: hsl(var(--primaryRaw-50));
+
+  /* Neutral Colors */
+  // #121212
+  --neutralRaw-1000: 0deg 0% 7%;
+  --neutral-1000: hsl(var(--neutralRaw-1000));
+  // #4D4D4D
+  --neutralRaw-600: 0deg 0% 30%;
+  --neutral-600: hsl(var(--neutralRaw-600));
+  // #666666
+  --neutralRaw-500: 0deg 0% 40%;
+  --neutral-500: hsl(var(--neutralRaw-500));
+  // #999999
+  --neutralRaw-400: 0deg 0% 60%;
+  --neutral-400: hsl(var(--neutralRaw-400));
+  // #CCCCCC
+  --neutralRaw-300: 0deg 0% 80%;
+  --neutral-300: hsl(var(--neutralRaw-300));
+  // #E6E6E6
+  --neutralRaw-200: 0deg 0% 90%;
+  --neutral-200: hsl(var(--neutralRaw-200));
+  // #F2F2F2
+  --neutralRaw-100: 0deg 0% 95%;
+  --neutral-100: hsl(var(--neutralRaw-100));
+  // #FAFAFA
+  --neutralRaw-75: 0deg 0% 98%;
+  --neutral-75: hsl(var(--neutralRaw-75));
+  // #FFFFFF
+  --neutralRaw-0: 0deg 0% 100%;
+  --neutral-0: hsl(var(--neutralRaw-0));
+
+  /* Semantics Colors - Success */
+  // #003B27
+  --successRaw-700: 160deg 100% 12%;
+  --success-700: hsl(var(--successRaw-700));
+  // #00593B
+  --successRaw-600: 160deg 100% 17%;
+  --success-600: hsl(var(--successRaw-600));
+  // #007B51
+  --successRaw-500: 160deg 100% 24%;
+  --success-500: hsl(var(--successRaw-500));
+  // #15B881
+  --successRaw-400: 160deg 80% 40%;
+  --success-400: hsl(var(--successRaw-400));
+  // #3DCB9C
+  --successRaw-300: 160deg 58% 52%;
+  --success-300: hsl(var(--successRaw-300));
+  // #71DFBB
+  --successRaw-200: 160deg 59% 63%;
+  --success-200: hsl(var(--successRaw-200));
+  // #8EE6C9
+  --successRaw-100: 160deg 64% 73%;
+  --success-100: hsl(var(--successRaw-100));
+  // #B0EFDA
+  --successRaw-75: 160deg 66% 81%;
+  --success-75: hsl(var(--successRaw-75));
+  // #ECFFFD
+  --successRaw-50: 174deg 100% 96%;
+  --success-50: hsl(var(--successRaw-50));
+
+  /* Semantics Colors - Warning */
+  // #472D00
+  --warningRaw-700: 38deg 100% 14%;
+  --warning-700: hsl(var(--warningRaw-700));
+  // #643F00
+  --warningRaw-600: 38deg 100% 20%;
+  --warning-600: hsl(var(--warningRaw-600));
+  // #A36701
+  --warningRaw-500: 38deg 99% 32%;
+  --warning-500: hsl(var(--warningRaw-500));
+  // #CC870E
+  --warningRaw-400: 38deg 88% 43%;
+  --warning-400: hsl(var(--warningRaw-400));
+  // #DEA542
+  --warningRaw-300: 38deg 70% 56%;
+  --warning-300: hsl(var(--warningRaw-300));
+  // #EEC072
+  --warningRaw-200: 38deg 73% 65%;
+  --warning-200: hsl(var(--warningRaw-200));
+  // #F0CB89
+  --warningRaw-100: 38deg 77% 74%;
+  --warning-100: hsl(var(--warningRaw-100));
+  // #F7D8A3
+  --warningRaw-75: 38deg 84% 80%;
+  --warning-75: hsl(var(--warningRaw-75));
+  // #FFF3DE
+  --warningRaw-50: 38deg 100% 94%;
+  --warning-50: hsl(var(--warningRaw-50));
+
+  /* Semantics Colors - Danger */
+  // #8C0000
+  --dangerRaw-700: 0deg 100% 27%;
+  --danger-700: hsl(var(--dangerRaw-700));
+  // #B30000
+  --dangerRaw-600: 0deg 100% 35%;
+  --danger-600: hsl(var(--dangerRaw-600));
+  // #CC0909
+  --dangerRaw-500: 0deg 92% 42%;
+  --danger-500: hsl(var(--dangerRaw-500));
+  // #E53E3E
+  --dangerRaw-400: 0deg 77% 57%;
+  --danger-400: hsl(var(--dangerRaw-400));
+  // #EE6969
+  --dangerRaw-300: 0deg 80% 67%;
+  --danger-300: hsl(var(--dangerRaw-300));
+  // #F29696
+  --dangerRaw-200: 0deg 78% 77%;
+  --danger-200: hsl(var(--dangerRaw-200));
+  // #F9C5C5
+  --dangerRaw-100: 0deg 81% 87%;
+  --danger-100: hsl(var(--dangerRaw-100));
+  // #FCDEDE
+  --dangerRaw-75: 0deg 83% 93%;
+  --danger-75: hsl(var(--dangerRaw-75));
+  // #FFF2F2
+  --dangerRaw-50: 0deg 100% 98%;
+  --danger-50: hsl(var(--dangerRaw-50));
+
+  /* Semantics Colors - Info */
+  // #003B59
+  --infoRaw-700: 200deg 100% 17%;
+  --info-700: hsl(var(--infoRaw-700));
+  // #005580
+  --infoRaw-600: 200deg 100% 25%;
+  --info-600: hsl(var(--infoRaw-600));
+  // #0874AA
+  --infoRaw-500: 200deg 91% 35%;
+  --info-500: hsl(var(--infoRaw-500));
+  // #39A1D5
+  --infoRaw-400: 200deg 65% 53%;
+  --info-400: hsl(var(--infoRaw-400));
+  // #63B4DD
+  --infoRaw-300: 200deg 64% 63%;
+  --info-300: hsl(var(--infoRaw-300));
+  // #91CCEA
+  --infoRaw-200: 200deg 68% 74%;
+  --info-200: hsl(var(--infoRaw-200));
+  // #B0D9EE
+  --infoRaw-100: 200deg 65% 81%;
+  --info-100: hsl(var(--infoRaw-100));
+  // #91CCEA
+  --infoRaw-75: 200deg 59% 90%;
+  --info-75: hsl(var(--infoRaw-75));
+  // #F2FAFF
+  --infoRaw-50: 203deg 100% 98%;
+  --info-50: hsl(var(--infoRaw-50));
+
+  /* Accent Colors - Orange */
+  // #C04D07
+  --orangeRaw-700: 23deg 93% 39%;
+  --orange-700: hsl(var(--orangeRaw-700));
+  // #F0640F
+  --orangeRaw-600: 23deg 88% 50%;
+  --orange-600: hsl(var(--orangeRaw-600));
+  // #FF7D2E
+  --orangeRaw-500: 23deg 100% 59%;
+  --orange-500: hsl(var(--orangeRaw-500));
+  // #FF9757
+  --orangeRaw-400: 23deg 100% 67%;
+  --orange-400: hsl(var(--orangeRaw-400));
+  // #FFB080
+  --orangeRaw-300: 23deg 100% 75%;
+  --orange-300: hsl(var(--orangeRaw-300));
+  // #FFC6A3
+  --orangeRaw-200: 23deg 100% 82%;
+  --orange-200: hsl(var(--orangeRaw-200));
+  // #FFDCC7
+  --orangeRaw-100: 23deg 100% 89%;
+  --orange-100: hsl(var(--orangeRaw-100));
+  // #FFE9DB
+  --orangeRaw-75: 23deg 100% 93%;
+  --orange-75: hsl(var(--orangeRaw-75));
+  // #FFF6F0
+  --orangeRaw-50: 23deg 100% 97%;
+  --orange-50: hsl(var(--orangeRaw-50));
+
+  /* Accent Colors - Purple */
+  // #5D396B
+  --purpleRaw-700: 283deg 30% 32%;
+  --purple-700: hsl(var(--purpleRaw-700));
+  // #7A4A8C
+  --purpleRaw-600: 284deg 31% 42%;
+  --purple-600: hsl(var(--purpleRaw-600));
+  // #905CA3
+  --purpleRaw-500: 284deg 28% 50%;
+  --purple-500: hsl(var(--purpleRaw-500));
+  // #A479B4
+  --purpleRaw-400: 284deg 28% 59%;
+  --purple-400: hsl(var(--purpleRaw-400));
+  // #B897C4
+  --purpleRaw-300: 284deg 28% 68%;
+  --purple-300: hsl(var(--purpleRaw-300));
+  // #CCB4D5
+  --purpleRaw-200: 283deg 28% 77%;
+  --purple-200: hsl(var(--purpleRaw-200));
+  // #DECDE5
+  --purpleRaw-100: 284deg 32% 85%;
+  --purple-100: hsl(var(--purpleRaw-100));
+  // #E9DEED
+  --purpleRaw-75: 282deg 29% 90%;
+  --purple-75: hsl(var(--purpleRaw-75));
+  // #F6F2F8
+  --purpleRaw-50: 284deg 30% 96%;
+  --purple-50: hsl(var(--purpleRaw-50));
+
+  /* Typography : Font Family - Avenir Next LT Pro */
+  --font-sans-serif: 'Avenir Next LT Pro', system-ui, -apple-system, 'Segoe UI',
+    Roboto, 'Helvetica Neue', Arial, 'Noto Sans', 'Liberation Sans', sans-serif,
+    'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+
+  /* Font Sizes */
+  /* Produces 0.75rem. Equivalent to 12px and so on. */
+  --fs-12: calc(12rem / 16);
+  --fs-14: calc(14rem / 16);
+  --fs-16: calc(16rem / 16);
+  --fs-18: calc(18rem / 16);
+  --fs-20: calc(20rem / 16);
+  --fs-24: calc(24rem / 16);
+  --fs-26: calc(26rem / 16);
+  --fs-32: calc(32rem / 16);
+  --fs-36: calc(36rem / 16);
+  --fs-40: calc(40rem / 16);
+  --fs-48: calc(48rem / 16);
+  --fs-56: calc(56rem / 16);
+  --fs-64: calc(64rem / 16);
+  --fs-80: calc(80rem / 16);
+
+  /* Font Weights */
+  --fw-normal: 400;
+  --fw-demi: 600;
+  --fw-bold: 700;
+
+  /* Line Heights */
+  --lh-single-line: 1.2;
+  --lh-multi-line: 1.4;
+
+  /* Gutter Spaces */
+  --gutter-0: 0;
+  --gutter-2: 2px;
+  --gutter-4: 4px;
+  --gutter-8: 8px;
+  --gutter-12: 12px;
+  --gutter-16: 16px;
+  --gutter-24: 24px;
+  --gutter-32: 32px;
+  --gutter-40: 40px;
+  --gutter-48: 48px;
+  --gutter-56: 56px;
+  --gutter-64: 64px;
+
+  /* Border Radius */
+  --borderRadius-0: 0;
+  --borderRadius-2: 2px;
+  --borderRadius-4: 4px;
+  --borderRadius-8: 8px;
+  --borderRadius-16: 16px;
+
+  /* Elevations */
+  --boxShadow-0: none;
+  --boxShadow-100: 0px 0px 2px hsl(var(--neutralRaw-1000) / 0.05),
+    0px 0px 4px hsl(var(--neutralRaw-1000) / 0.05);
+  --boxShadow-200: 0px 4px 8px hsl(var(--neutralRaw-1000) / 0.05),
+    0px 0px 8px hsl(var(--neutralRaw-1000) / 0.05);
+  --boxShadow-300: 0px 8px 16px hsl(var(--neutralRaw-1000) / 0.05),
+    0px 0px 8px hsl(var(--neutralRaw-1000) / 0.05);
+  --boxShadow-400: 0px 12px 24px hsl(var(--neutralRaw-1000) / 0.05),
+    0px 0px 8px hsl(var(--neutralRaw-1000) / 0.05);
+  --boxShadow-500: 0px 16px 32px hsl(var(--neutralRaw-1000) / 0.05),
+    0px 0px 8px hsl(var(--neutralRaw-1000) / 0.05);
+
+  /* Z-indexes */
+  --zindex-dropdown: 1000;
+  --zindex-sticky: 1100;
+  --zindex-fixed: 1200;
+  --zindex-modal-backdrop: 1300;
+  --zindex-drawer: 1400;
+  --zindex-modal: 1500;
+  --zindex-popover: 1600;
+  --zindex-tooltip: 1700;
+
+  /* Transitions */
+  // Follow https://material.google.com/motion/duration-easing.html#duration-easing-natural-easing-curves
+  // to learn the context in which each easing should be used.
+  // This is the most common easing curve.
+  --transitionEasingEaseInOut: cubic-bezier(0.4, 0, 0.2, 1);
+  // Objects enter the screen at full velocity from off-screen and
+  // slowly decelerate to a resting point.
+  --transitionEasingEaseOut: cubic-bezier(0, 0, 0.2, 1);
+  // Objects leave the screen at full velocity. They do not decelerate when off-screen.
+  --transitionEasingEaseIn: cubic-bezier(0.4, 0, 1, 1);
+  // The sharp curve is used by objects that may return to the screen at any time.
+  --transitionEasingSharp: cubic-bezier(0.4, 0, 0.6, 1);
+  // Follow https://material.io/guidelines/motion/duration-easing.html#duration-easing-common-durations
+  // to learn when use what timing
+  --transitionDurationShortest: 150ms;
+  --transitionDurationShorter: 200ms;
+  --transitionDurationShort: 250ms;
+  // most basic recommended timing
+  --transitionDurationStandard: 300ms;
+  // this is to be used in complex animations
+  --transitionDurationComplex: 375ms;
+  // recommended when something is entering screen
+  --transitionDurationEnteringScreen: 225ms;
+  // recommended when something is leaving screen
+  --transitionDurationLeavingScreen: 195ms;
+
+  /* Opacity */
+  --opacityDisabled: 0.4;
+
+  /* Breakpoints */
+  /* NOTE : WE CAN NOT USE BREAKPOINT VAR IN MEDIA QUERY, WE HAVE PUT HERE BECAUSE OF REFERENCE PURPOSE ONLY. (That's why we have commented below variables.)
+            DO NOT REMOVE THIS.
+  */
+  /* The var() function can be used in place of any part of a value in any property on an element.
+  The var() function can not be used as property names, selectors, or anything else besides property values.
+  (Doing so usually produces invalid syntax, or else a value whose meaning has no connection to the variable.)
+  So, we can't use it in a media query & that makes sense. 
+  Because we can set --breakpoint-xs e.g. to :root, that is, the <html> element, and from there be inherited to other elements.
+  But a media query is not an element, it does not inherit from <html>, so it can't work.
+  Ref. : https://www.w3.org/TR/css-variables-1/#using-variables , https://stackoverflow.com/questions/40722882/css-native-variables-not-working-in-media-queries
+  */
+  // --breakpoint-xs: 0;
+  // --breakpoint-sm: 576px;
+  // --breakpoint-md: 768px;
+  // --breakpoint-lg: 992px;
+  // --breakpoint-xl: 1200px;
+  // --breakpoint-xxl: 1400px;
+}
+
+html {
+  /* Produces 1rem. Equivalent to 16px */
+  --base: 16rem;
+  font-size: calc(var(--base) / 16);
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-sans-serif);
+  font-size: var(--fs-14);
+  font-weight: var(--fw-normal);
+  line-height: var(--lh-multi-line);
+  letter-spacing: calc(0.2rem / 16);
+  color: var(--neutral-1000);
+  background-color: var(--neutral-0);
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent;
+}

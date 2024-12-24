@@ -1,0 +1,253 @@
+.fontSize-inherit {
+  font-size: inherit !important;
+}
+.fontSize-12 {
+  font-size: var(--fs-12) !important;
+}
+.fontSize-14 {
+  font-size: var(--fs-14) !important;
+}
+.fontSize-16 {
+  font-size: var(--fs-16) !important;
+}
+.fontSize-18 {
+  font-size: var(--fs-18) !important;
+}
+.fontSize-20 {
+  font-size: var(--fs-20) !important;
+}
+.fontSize-24 {
+  font-size: var(--fs-24) !important;
+}
+.fontSize-26 {
+  font-size: var(--fs-26) !important;
+}
+.fontSize-32 {
+  font-size: var(--fs-32) !important;
+}
+.fontSize-36 {
+  font-size: var(--fs-36) !important;
+}
+.fontSize-40 {
+  font-size: var(--fs-40) !important;
+}
+.fontSize-48 {
+  font-size: var(--fs-48) !important;
+}
+.fontSize-56 {
+  font-size: var(--fs-56) !important;
+}
+.fontSize-64 {
+  font-size: var(--fs-64) !important;
+}
+.fontSize-80 {
+  font-size: var(--fs-80) !important;
+}
+
+.align {
+  &-left {
+    text-align: left !important;
+  }
+  &-right {
+    text-align: right !important;
+  }
+  &-center {
+    text-align: center !important;
+  }
+  &-justify {
+    text-align: justify !important;
+  }
+  &-inherit {
+    text-align: inherit !important;
+  }
+  @media (min-width: 576px) {
+    &-sm {
+      &-left {
+        text-align: left !important;
+      }
+      &-right {
+        text-align: right !important;
+      }
+      &-center {
+        text-align: center !important;
+      }
+      &-justify {
+        text-align: justify !important;
+      }
+      &-inherit {
+        text-align: inherit !important;
+      }
+    }
+  }
+  @media (min-width: 768px) {
+    &-md {
+      &-left {
+        text-align: left !important;
+      }
+      &-right {
+        text-align: right !important;
+      }
+      &-center {
+        text-align: center !important;
+      }
+      &-justify {
+        text-align: justify !important;
+      }
+      &-inherit {
+        text-align: inherit !important;
+      }
+    }
+  }
+  @media (min-width: 992px) {
+    &-lg {
+      &-left {
+        text-align: left !important;
+      }
+      &-right {
+        text-align: right !important;
+      }
+      &-center {
+        text-align: center !important;
+      }
+      &-justify {
+        text-align: justify !important;
+      }
+      &-inherit {
+        text-align: inherit !important;
+      }
+    }
+  }
+  @media (min-width: 1200px) {
+    &-xl {
+      &-left {
+        text-align: left !important;
+      }
+      &-right {
+        text-align: right !important;
+      }
+      &-center {
+        text-align: center !important;
+      }
+      &-justify {
+        text-align: justify !important;
+      }
+      &-inherit {
+        text-align: inherit !important;
+      }
+    }
+  }
+  @media (min-width: 1400px) {
+    &-xxl {
+      &-left {
+        text-align: left !important;
+      }
+      &-right {
+        text-align: right !important;
+      }
+      &-center {
+        text-align: center !important;
+      }
+      &-justify {
+        text-align: justify !important;
+      }
+      &-inherit {
+        text-align: inherit !important;
+      }
+    }
+  }
+}
+.weight {
+  &-initial {
+    font-weight: initial !important;
+  }
+  &-normal {
+    font-weight: var(--fw-normal) !important;
+  }
+  &-demi {
+    font-weight: var(--fw-demi) !important;
+  }
+  &-bold {
+    font-weight: var(--fw-bold) !important;
+  }
+}
+.text {
+  &-clip,
+  &-truncate {
+    overflow: hidden !important;
+    white-space: nowrap !important;
+    // Prevent Safari from showing tooltip when text overflow is hidden with ellipsis
+    // Ref. : https://stackoverflow.com/questions/20974276/prevent-safari-from-showing-tooltip-when-text-overflow-is-hidden-with-ellipsis
+    &::after {
+      content: '';
+      display: block;
+    }
+  }
+  &-clip {
+    text-overflow: clip !important;
+  }
+  &-truncate {
+    text-overflow: ellipsis !important;
+  }
+
+  &-normal {
+    white-space: normal !important;
+  }
+  &-nowrap {
+    white-space: nowrap !important;
+  }
+}
+
+.wordbreak {
+  &-normal {
+    word-break: normal !important;
+  }
+
+  &-keep-all {
+    word-break: keep-all !important;
+  }
+
+  &-break-all {
+    word-break: break-all !important;
+  }
+  &-break-word {
+    word-wrap: break-word !important;
+    word-break: break-word !important;
+  }
+}
+
+.lineHeight {
+  &-single-line {
+    line-height: var(--lh-single-line) !important;
+  }
+
+  &-multi-line {
+    line-height: var(--lh-multi-line) !important;
+  }
+}
+
+.text-decoration {
+  &-none {
+    text-decoration: none !important;
+  }
+
+  &-underline {
+    text-decoration: underline !important;
+  }
+
+  &-lineThrough {
+    text-decoration: line-through !important;
+  }
+}
+.text-transform {
+  &-lowercase {
+    text-transform: lowercase !important;
+  }
+
+  &-uppercase {
+    text-transform: uppercase !important;
+  }
+
+  &-capitalize {
+    text-transform: capitalize !important;
+  }
+}
