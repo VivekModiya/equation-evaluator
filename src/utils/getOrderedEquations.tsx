@@ -7,7 +7,6 @@ export const getOrderedEquations = (equations: Equation[]) => {
 
   while (Boolean(currEquation)) {
     orderedEquations.unshift(currEquation as Equation)
-    console.log(currEquation?.nextFunctionId)
     currEquation = equations.find(eq => eq.nextFunctionId === currEquation?.id)
   }
   return orderedEquations

@@ -15,13 +15,21 @@ export interface FunctionCardProps {
   equation: string
   setEquation: (val: string) => void
   title: string
+  setStartNodeRef: (ref: React.RefObject<HTMLDivElement> | null) => void
+  setEndNodeRef: (ref: React.RefObject<HTMLDivElement> | null) => void
 }
 
 export const FunctionCard = React.forwardRef<
   React.MutableRefObject<HTMLDivElement>,
   FunctionCardProps
 >((props: FunctionCardProps, ref) => {
-  const { title, equation, setEquation } = props
+  const {
+    title,
+    equation,
+    setEquation,
+    setStartNodeRef = () => null,
+    setEndNodeRef = () => null,
+  } = props
 
   const error = React.useMemo(
     () => isValidEquation(equation) === false,
@@ -78,8 +86,8 @@ export const FunctionCard = React.forwardRef<
           mt: 24,
         }}
       >
-        <InputNode />
-        <OutputNode />
+        <InputNode setRef={setStartNodeRef} />
+        <OutputNode setRef={setEndNodeRef} />
       </Box>
     </Paper>
   )

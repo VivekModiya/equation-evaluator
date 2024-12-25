@@ -1,7 +1,8 @@
+import React from 'react'
 import { Box } from '../../components'
 import styles from './index.module.scss'
 
-export const CircleNode = () => {
+export const CircleNode = React.forwardRef<HTMLDivElement>((_, ref) => {
   return (
     <Box
       stylesObject={{
@@ -13,6 +14,8 @@ export const CircleNode = () => {
         justifyContent: 'center',
       }}
       className={styles.outerCircle}
+      // @ts-ignore
+      ref={ref}
     >
       <Box
         stylesObject={{
@@ -20,7 +23,7 @@ export const CircleNode = () => {
           bgColor: 'primary-300',
         }}
         className={styles.innerCircle}
-      ></Box>
+      />
     </Box>
   )
-}
+})

@@ -7,6 +7,7 @@ import React from 'react'
 import { DEFAULT_EQUATIONS } from '../../constants'
 import { evaluateEquation } from '../../utils/evaluateEquation'
 import { getOrderedEquations } from '../../utils/getOrderedEquations'
+import { ConnectionLine } from '../ConnectionLine/ConnectionLine'
 
 export const Playground = React.forwardRef<
   React.MutableRefObject<HTMLDivElement>,
@@ -14,6 +15,15 @@ export const Playground = React.forwardRef<
 >(() => {
   const [initialValue, setInitialValue] = React.useState(0)
   const [equations, setEquations] = React.useState(DEFAULT_EQUATIONS)
+  const [connectionLines, setConnectionLines] = React.useState<
+    Record<
+      number,
+      {
+        startNodeRef?: React.RefObject<HTMLDivElement> | null
+        endNodeRef?: React.RefObject<HTMLDivElement> | null
+      }
+    >
+  >({})
 
   const finalValue = React.useMemo(
     () =>
@@ -30,15 +40,6 @@ export const Playground = React.forwardRef<
   const outputFunctionCardRef = React.useRef<HTMLDivElement>(null)
 
   const [allComponentRendered, setAllComponentsRendered] = React.useState(false)
-
-  React.useEffect(() => {
-    // Simulate rendering of other components
-    const timer = setTimeout(() => {
-      setAllComponentsRendered(true) // Signal that rendering is complete
-    }, 0) // Runs after the current event loop
-
-    return () => clearTimeout(timer) // Cleanup
-  }, [])
 
   const updateInputOutputBoxPosition = () => {
     const inputCardRect = inputFunctionCardRef?.current?.getBoundingClientRect()
@@ -70,6 +71,13 @@ export const Playground = React.forwardRef<
       }px`
     }
   }
+
+  React.useEffect(() => {
+    const timer = setTimeout(() => {
+      setAllComponentsRendered(true)
+    }, 0)
+    return () => clearTimeout(timer) // Cleanup
+  }, [])
 
   React.useEffect(updateInputOutputBoxPosition, [
     inputFunctionCardRef?.current,
@@ -105,9 +113,18 @@ export const Playground = React.forwardRef<
                 setInitialValue(Number(e.target.value))
               }
             }}
-            stylesObject={{ position: 'fixed' }}
+            stylesObject={{ position: 'absolute' }}
             // @ts-ignore
             ref={inputBoxRef}
+            setCircleRef={ref =>
+              setConnectionLines(prev => {
+                prev[0] = {
+                  startNodeRef: ref,
+                  ...(prev[0] ?? {}),
+                }
+                return prev
+              })
+            }
           />
           <Box
             stylesObject={{
@@ -123,36 +140,94 @@ export const Playground = React.forwardRef<
           >
             {equations.map((equationDetails, index) => {
               return (
-                <FunctionCard
-                  title={equationDetails.functionName}
-                  equation={equationDetails.equation}
-                  setEquation={val => {
-                    setEquations(prev => {
-                      const newEquations = [...prev]
-                      newEquations[index] = {
-                        ...newEquations[index],
-                        equation: val,
+                <>
+                  <FunctionCard
+                    title={equationDetails.functionName}
+                    equation={equationDetails.equation}
+                    setEquation={val => {
+                      setEquations(prev => {
+                        const newEquations = [...prev]
+                        newEquations[index] = {
+                          ...newEquations[index],
+                          equation: val,
+                        }
+                        return newEquations
+                      })
+                    }}
+                    // @ts-ignore
+                    ref={
+                      equationDetails.initial
+                        ? inputFunctionCardRef
+                        : equationDetails.final
+                        ? outputFunctionCardRef
+                        : null
+                    }
+                    setStartNodeRef={ref => {
+                      if (
+                        connectionLines[equationDetails.id]?.startNodeRef !==
+                        ref
+                      ) {
+                        let connectionLineId
+                        if (equationDetails.initial) {
+                          connectionLineId = 0
+                        } else {
+                          connectionLineId =
+                            equations.find(
+                              eq => eq.nextFunctionId === equationDetails.id
+                            )?.id ?? -2
+                        }
+                        setConnectionLines(prev => {
+                          prev[connectionLineId] = {
+                            endNodeRef: ref,
+                            ...(prev[connectionLineId] ?? {}),
+                          }
+                          return prev
+                        })
                       }
-                      return newEquations
-                    })
-                  }}
-                  // @ts-ignore
-                  ref={
-                    equationDetails.initial
-                      ? inputFunctionCardRef
-                      : equationDetails.final
-                      ? outputFunctionCardRef
-                      : null
-                  }
+                    }}
+                    setEndNodeRef={ref => {
+                      if (
+                        connectionLines[equationDetails.id]?.endNodeRef !== ref
+                      ) {
+                        setConnectionLines(prev => {
+                          prev[equationDetails.id] = {
+                            startNodeRef: ref,
+                            ...(prev[equationDetails.id] ?? {}),
+                          }
+                          return prev
+                        })
+                      }
+                    }}
+                  />
+                </>
+              )
+            })}
+            {Object.keys(connectionLines).map(key => {
+              const line = connectionLines[key as unknown as number]
+              return (
+                <ConnectionLine
+                  startNodeRef={line?.startNodeRef}
+                  endNodeRef={line?.endNodeRef}
                 />
               )
             })}
           </Box>
           <OutputBox
             value={finalValue}
-            stylesObject={{ position: 'fixed' }}
+            stylesObject={{ position: 'absolute' }}
             // @ts-ignore
             ref={outputBoxRef}
+            setCircleRef={ref =>
+              setConnectionLines(prev => {
+                const connectionLineId =
+                  equations.find(eq => eq.final)?.id ?? -1
+                prev[connectionLineId] = {
+                  endNodeRef: ref,
+                  ...(prev[connectionLineId] ?? {}),
+                }
+                return prev
+              })
+            }
           />
         </Box>
       </Background>

@@ -6,13 +6,15 @@ import { CircleNode } from '../NodeConnector'
 import { stylesFunction } from '../../tokens'
 import { Box, InputField, InputFieldProps, Typography } from '../../components'
 
-export interface InputBoxProps extends InputFieldProps {}
+export interface InputBoxProps extends InputFieldProps {
+  setCircleRef?: (ref: React.RefObject<HTMLDivElement>) => void
+}
 
 export const OutputBox = React.forwardRef<
   React.RefObject<HTMLDivElement>,
   InputBoxProps
 >((props: InputBoxProps, ref) => {
-  const { classes: _, ...other } = props
+  const { classes: _, setCircleRef, ...other } = props
   return (
     <InputField
       startAdornment={
@@ -25,9 +27,10 @@ export const OutputBox = React.forwardRef<
             borderColor: 'success-200',
           }}
         >
-          <CircleNode />
+          <CircleNode ref={ref => setCircleRef?.({ current: ref })} />
         </Box>
       }
+      // @ts-ignore
       ref={ref}
       classes={{
         wrapper: stylesFunction({

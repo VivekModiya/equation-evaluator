@@ -5,12 +5,15 @@ import { joinClassNames } from '../../utils'
 import styles from './index.module.scss'
 import React from 'react'
 
-export interface InputBoxProps extends InputFieldProps {}
+export interface InputBoxProps extends InputFieldProps {
+  setCircleRef?: (ref: React.RefObject<HTMLDivElement>) => void
+}
 
 export const InputBox = React.forwardRef<
   React.RefObject<HTMLDivElement>,
   InputBoxProps
->((props, ref) => {
+>(({ ...props }, ref) => {
+  const { setCircleRef, ...other } = props
   return (
     <InputField
       ref={ref}
@@ -24,7 +27,7 @@ export const InputBox = React.forwardRef<
             borderColor: 'warning-100',
           }}
         >
-          <CircleNode />
+          <CircleNode ref={ref => setCircleRef?.({ current: ref })} />
         </Box>
       }
       classes={{
@@ -63,7 +66,7 @@ export const InputBox = React.forwardRef<
           Initial value of x
         </Typography>
       }
-      {...props}
+      {...other}
     />
   )
 })
