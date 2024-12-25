@@ -1,5 +1,4 @@
 export * from './Paper'
-export * from './Background'
 export * from './InputField'
 export * from './Typography'
 export * from './SelectMenu'

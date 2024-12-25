@@ -1,7 +1,7 @@
 import { InputBox } from '../InputBox'
 import styles from './index.module.scss'
 import { OutputBox } from '../OutputBox'
-import { Background, Box } from '../../components'
+import { Box } from '../../components'
 import { FunctionCard } from '../FunctionCard'
 import React from 'react'
 import { DEFAULT_EQUATIONS } from '../../constants'
@@ -90,147 +90,135 @@ export const Playground = React.forwardRef<
   window.addEventListener('resize', updateInputOutputBoxPosition)
 
   return (
-    <Box stylesObject={{ height: 100 }}>
-      <Background
-        stylesObject={{ height: 100, overflow: 'hidden', display: 'flex' }}
+    <Box
+      stylesObject={{
+        py: 24,
+        width: 100,
+        display: 'flex',
+        overflow: 'auto',
+        alignContent: 'center',
+        position: 'relative',
+        justifyContent: 'center',
+      }}
+      className={styles.root}
+    >
+      <InputBox
+        value={initialValue}
+        onChange={e => {
+          if (isNaN(Number(e.target.value)) === false) {
+            setInitialValue(Number(e.target.value))
+          }
+        }}
+        stylesObject={{ position: 'absolute' }}
+        // @ts-ignore
+        ref={inputBoxRef}
+        setCircleRef={ref =>
+          setConnectionLines(prev => {
+            prev[0] = {
+              startNodeRef: ref,
+              ...(prev[0] ?? {}),
+            }
+            return prev
+          })
+        }
+      />
+      <Box
+        stylesObject={{
+          display: 'flex',
+          flexWrap: 'wrap',
+          justifyContent: 'center',
+          alignItems: 'center',
+          position: 'relative',
+        }}
+        className={styles.container}
       >
-        <Box
-          stylesObject={{
-            width: 100,
-            overflow: 'hidden',
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-            height: 100,
-            position: 'relative',
-          }}
-          className={styles.padding}
-        >
-          <InputBox
-            value={initialValue}
-            onChange={e => {
-              if (isNaN(Number(e.target.value)) === false) {
-                setInitialValue(Number(e.target.value))
-              }
-            }}
-            stylesObject={{ position: 'absolute' }}
-            // @ts-ignore
-            ref={inputBoxRef}
-            setCircleRef={ref =>
-              setConnectionLines(prev => {
-                prev[0] = {
-                  startNodeRef: ref,
-                  ...(prev[0] ?? {}),
-                }
-                return prev
-              })
-            }
-          />
-          <Box
-            stylesObject={{
-              width: 100,
-              height: 100,
-              overflow: 'auto',
-              display: 'flex',
-              flexWrap: 'wrap',
-              justifyContent: 'center',
-              alignItems: 'center',
-            }}
-            className={styles.container}
-          >
-            {equations.map((equationDetails, index) => {
-              return (
-                <>
-                  <FunctionCard
-                    title={equationDetails.functionName}
-                    equation={equationDetails.equation}
-                    setEquation={val => {
-                      setEquations(prev => {
-                        const newEquations = [...prev]
-                        newEquations[index] = {
-                          ...newEquations[index],
-                          equation: val,
-                        }
-                        return newEquations
-                      })
-                    }}
-                    // @ts-ignore
-                    ref={
-                      equationDetails.initial
-                        ? inputFunctionCardRef
-                        : equationDetails.final
-                        ? outputFunctionCardRef
-                        : null
+        {equations.map((equationDetails, index) => {
+          return (
+            <>
+              <FunctionCard
+                title={equationDetails.functionName}
+                equation={equationDetails.equation}
+                setEquation={val => {
+                  setEquations(prev => {
+                    const newEquations = [...prev]
+                    newEquations[index] = {
+                      ...newEquations[index],
+                      equation: val,
                     }
-                    setStartNodeRef={ref => {
-                      if (
-                        connectionLines[equationDetails.id]?.startNodeRef !==
-                        ref
-                      ) {
-                        let connectionLineId
-                        if (equationDetails.initial) {
-                          connectionLineId = 0
-                        } else {
-                          connectionLineId =
-                            equations.find(
-                              eq => eq.nextFunctionId === equationDetails.id
-                            )?.id ?? -2
-                        }
-                        setConnectionLines(prev => {
-                          prev[connectionLineId] = {
-                            endNodeRef: ref,
-                            ...(prev[connectionLineId] ?? {}),
-                          }
-                          return prev
-                        })
-                      }
-                    }}
-                    setEndNodeRef={ref => {
-                      if (
-                        connectionLines[equationDetails.id]?.endNodeRef !== ref
-                      ) {
-                        setConnectionLines(prev => {
-                          prev[equationDetails.id] = {
-                            startNodeRef: ref,
-                            ...(prev[equationDetails.id] ?? {}),
-                          }
-                          return prev
-                        })
-                      }
-                    }}
-                  />
-                </>
-              )
-            })}
-            {Object.keys(connectionLines).map(key => {
-              const line = connectionLines[key as unknown as number]
-              return (
-                <ConnectionLine
-                  startNodeRef={line?.startNodeRef}
-                  endNodeRef={line?.endNodeRef}
-                />
-              )
-            })}
-          </Box>
-          <OutputBox
-            value={finalValue}
-            stylesObject={{ position: 'absolute' }}
-            // @ts-ignore
-            ref={outputBoxRef}
-            setCircleRef={ref =>
-              setConnectionLines(prev => {
-                const connectionLineId =
-                  equations.find(eq => eq.final)?.id ?? -1
-                prev[connectionLineId] = {
-                  endNodeRef: ref,
-                  ...(prev[connectionLineId] ?? {}),
+                    return newEquations
+                  })
+                }}
+                // @ts-ignore
+                ref={
+                  equationDetails.initial
+                    ? inputFunctionCardRef
+                    : equationDetails.final
+                    ? outputFunctionCardRef
+                    : null
                 }
-                return prev
-              })
+                setStartNodeRef={ref => {
+                  if (
+                    connectionLines[equationDetails.id]?.startNodeRef !== ref
+                  ) {
+                    let connectionLineId
+                    if (equationDetails.initial) {
+                      connectionLineId = 0
+                    } else {
+                      connectionLineId =
+                        equations.find(
+                          eq => eq.nextFunctionId === equationDetails.id
+                        )?.id ?? -2
+                    }
+                    setConnectionLines(prev => {
+                      prev[connectionLineId] = {
+                        endNodeRef: ref,
+                        ...(prev[connectionLineId] ?? {}),
+                      }
+                      return prev
+                    })
+                  }
+                }}
+                setEndNodeRef={ref => {
+                  if (connectionLines[equationDetails.id]?.endNodeRef !== ref) {
+                    setConnectionLines(prev => {
+                      prev[equationDetails.id] = {
+                        startNodeRef: ref,
+                        ...(prev[equationDetails.id] ?? {}),
+                      }
+                      return prev
+                    })
+                  }
+                }}
+              />
+            </>
+          )
+        })}
+      </Box>
+      <OutputBox
+        value={finalValue}
+        stylesObject={{ position: 'absolute' }}
+        // @ts-ignore
+        ref={outputBoxRef}
+        setCircleRef={ref =>
+          setConnectionLines(prev => {
+            const connectionLineId = equations.find(eq => eq.final)?.id ?? -1
+            prev[connectionLineId] = {
+              endNodeRef: ref,
+              ...(prev[connectionLineId] ?? {}),
             }
+            return prev
+          })
+        }
+      />
+      {Object.keys(connectionLines).map(key => {
+        const line = connectionLines[key as unknown as number]
+        return (
+          <ConnectionLine
+            startNodeRef={line?.startNodeRef}
+            endNodeRef={line?.endNodeRef}
           />
-        </Box>
-      </Background>
+        )
+      })}
     </Box>
   )
 })

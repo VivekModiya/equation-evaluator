@@ -30,7 +30,7 @@ export const getCurvePath = (params: GetCurvePathParams): string | null => {
 
   if (direction === 'y') {
     controlX = (startX + endX) / 2
-    controlY = Math.min(startY, endY) + strength
+    controlY = Math.min(startY, endY) - strength
   } else {
     controlX = Math.min(startX, endX) + strength
     controlY = (startY + endY) / 2

@@ -10,19 +10,19 @@ export interface ConnectionLineProps {
 export const ConnectionLine = React.memo((props: ConnectionLineProps) => {
   const { startNodeRef, endNodeRef } = props
 
-  const startRect = startNodeRef?.current?.getBoundingClientRect()
-  const endRect = endNodeRef?.current?.getBoundingClientRect()
+  const getPath = () => {
+    const startRect = startNodeRef?.current?.getBoundingClientRect()
+    const endRect = endNodeRef?.current?.getBoundingClientRect()
 
-  const verticalDiff = Math.abs((startRect?.top ?? 0) - (endRect?.top ?? 0))
-  const horizontalDiff = Math.abs((startRect?.left ?? 0) - (endRect?.left ?? 0))
+    const verticalDiff = (startRect?.top ?? 0) - (endRect?.top ?? 0)
+    const horizontalDiff = (startRect?.left ?? 0) - (endRect?.left ?? 0)
 
-  const isHorizontallyAligned = verticalDiff < 50
-  const isVerticallyAligned = horizontalDiff < 50
+    const isHorizontallyAligned = Math.abs(verticalDiff) < 50
+    const isVerticallyAligned = Math.abs(horizontalDiff) < 50
 
-  const connectionLineType =
-    isVerticallyAligned || isHorizontallyAligned ? 'curve' : 'bazier'
+    const connectionLineType =
+      isVerticallyAligned || isHorizontallyAligned ? 'curve' : 'bazier'
 
-  const dPath = React.useMemo(() => {
     if (connectionLineType === 'curve') {
       return (
         getCurvePath({
@@ -33,9 +33,22 @@ export const ConnectionLine = React.memo((props: ConnectionLineProps) => {
         }) ?? ''
       )
     } else if (connectionLineType === 'bazier') {
-      return getCubicBezierPath({ startNodeRef, endNodeRef }) ?? ''
+      return (
+        getCubicBezierPath({
+          startNodeRef,
+          endNodeRef,
+          direction: verticalDiff < 0 ? 'ltr' : 'rtl',
+        }) ?? ''
+      )
     }
     return ''
+  }
+
+  const [dPath, setDPath] = React.useState(getPath())
+
+  React.useEffect(() => {
+    const handler = () => setDPath(getPath)
+    window.addEventListener('resize', handler)
   }, [startNodeRef, endNodeRef])
 
   return (

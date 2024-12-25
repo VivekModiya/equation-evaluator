@@ -355,4 +355,6 @@ body {
   background-color: var(--neutral-0);
   -webkit-text-size-adjust: 100%;
   -webkit-tap-highlight-color: transparent;
+  background-image: radial-gradient(circle, #e8e5e5 2px, transparent 1px);
+  background-size: 20px 20px;
 }

@@ -87,7 +87,6 @@ export const InputField = React.forwardRef<
             borderColor: 'neutral-400',
             display: 'flex',
             alignItems: 'center',
-            bgColor: 'neutral-0',
           }),
           classes?.wrapper
         )}

@@ -1,20 +1,16 @@
 .container {
   column-gap: 120px;
+  row-gap: 100px;
+  margin: 0 150px;
+  max-width: 1200px;
 }
 
-.padding {
-  padding: 100px 300px;
-}
-
-.initialInputWrapper {
-  display: flex;
-  align-self: end;
-}
-
-.initialInput {
-  align-self: end;
-}
-
-.finalOutput {
-  align-self: end;
+@media (min-width: 1200px) {
+  /* Corrected: added px */
+  .root {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+  }
 }

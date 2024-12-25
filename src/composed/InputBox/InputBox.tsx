@@ -35,7 +35,8 @@ export const InputBox = React.forwardRef<
           border: 1,
           borderWidth: 2,
           borderRadius: 16,
-          borderColor: 'warning-100',
+          borderColor: 'warning-200',
+          bgColor: 'neutral-0',
         }),
         root: joinClassNames(
           stylesFunction({
@@ -44,6 +45,7 @@ export const InputBox = React.forwardRef<
           }),
           styles.root
         ),
+
         input: stylesFunction({
           textWeight: 'bold',
           fontSize: 16,
@@ -58,7 +60,7 @@ export const InputBox = React.forwardRef<
             px: 12,
             borderRadius: 'pill',
             display: 'inline-block',
-            bgColor: 'warning-300',
+            bgColor: 'warning-400',
           }}
           weight="demi"
           color="neutral-0"

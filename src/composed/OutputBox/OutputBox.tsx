@@ -37,8 +37,9 @@ export const OutputBox = React.forwardRef<
           border: 1,
           borderWidth: 2,
           borderRadius: 16,
-          borderColor: 'success-300',
+          borderColor: 'success-400',
           maxWidth: 'fit-content',
+          bgColor: 'neutral-0',
         }),
         root: joinClassNames(
           stylesFunction({
