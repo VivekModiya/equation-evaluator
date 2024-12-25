@@ -3,7 +3,7 @@ import { joinClassNames } from '../../utils'
 
 
 type SizingClassModifier = 25 | 50 | 75 | 100 | 'auto'
-type Sizing100ClassModifier = 100
+type Sizing100ClassModifier = 100 | 'fit-content'
 
 export interface SizingProps {
   /**

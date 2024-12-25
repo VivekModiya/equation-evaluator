@@ -1,5 +1,5 @@
-import { CssBaseline } from '../components/CssBaseLine'
-import { Playground } from '../feature/Playground/Playground'
+import { Playground } from '../composed'
+import { CssBaseline } from '../components'
 
 function App() {
   return (

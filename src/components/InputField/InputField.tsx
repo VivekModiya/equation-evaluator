@@ -1,141 +1,108 @@
-export interface InputFieldProps {
-  /**
-   * Label to display next to the input field.
-   * Can be a string or any valid React node (e.g., JSX, elements, etc.)
-   * @default ''
-   */
-  label?: React.ReactNode
-  /**
-   * The current value of the input field.
-   * If not provided, the input will be uncontrolled.
-   */
-  value?: string
-  /**
-   * Prop to change the size of the input field
-   * @default 'medium'
-   */
-  size?: 'small' | 'medium' | 'large'
-  /**
-   * If true, input field will take full width
-   * @default false
-   */
-  fullWidth?: boolean
-  /**
-   * If true, input field will become unresponsive
-   * @default false
-   */
-  disabled?: boolean
-  /**
-   * Callback function that is triggered when the input value changes.
-   * This function will receive the change event as an argument.
-   */
-  onChange?: React.ChangeEventHandler<HTMLInputElement>
-  /**
-   * Additional properties to pass to the underlying <input> element.
-   * This allows customization of native input attributes like `placeholder`, `maxLength`, etc.
-   * The 'size' prop is excluded to prevent conflicts with the `size` prop defined in this component.
-   */
-  inputProps?: Omit<
+import { stylesFunction } from '../../tokens'
+import { joinClassNames } from '../../utils/joinClassNames'
+import { Box } from '../Box/Box'
+import { Typography } from '../Typography'
+import styles from './index.module.scss'
+
+interface InputProps
+  extends Omit<
     React.DetailedHTMLProps<
       React.InputHTMLAttributes<HTMLInputElement>,
       HTMLInputElement
     >,
     'size'
-  >
-  /**
-   * Determines the color scheme of the input field.
-   * Can be 'primary', 'secondary', 'success', or 'error'.
-   * This will control the input's border and focus color.
-   * @default 'primary'
-   */
-  color?: 'primary' | 'secondary' | 'success' | 'error'
-  /**
-   * An optional CSS class to apply to the input field.
-   * Use this prop to add custom styling or additional classes.
-   */
+  > {}
+
+export interface InputFieldProps {
+  label?: React.ReactNode
+  value?: string
+  disabled?: boolean
+  fullWidth?: boolean
+  onChange?: React.ChangeEventHandler<HTMLInputElement>
+  inputProps?: InputProps
   className?: string
-  /**
-   * If true, applies an error state to the input field.
-   * This can be used to highlight validation errors or other issues with the input.
-   * @default false
-   */
   error?: boolean
-  /**
-   * A helper text displayed below the input field.
-   * Can be used to provide additional guidance or information to the user.
-   * Typically used in combination with the 'error' state for validation messages.
-   */
   helperText?: string
-  /**
-   * An optional element to display at the start of the input field.
-   * Common use cases include icons or buttons (e.g., a search icon or a clear button).
-   */
   startAdornment?: React.ReactNode
-  /**
-   * An optional element to display at the end of the input field.
-   * Common use cases include icons or buttons (e.g., a clear button, or a password visibility toggle).
-   */
   endAdornment?: React.ReactNode
   placeholder?: string
   classes?: {
     root?: string
     wrapper?: string
+    inputContainer?: string
     input?: string
+    helperText?: string
   }
+  align?: 'left' | 'right'
 }
-import { joinClassNames } from '../../utils/joinClassNames'
-import styles from './index.module.scss'
 
 export const InputField = (props: InputFieldProps) => {
   const {
-    size = 'medium',
     label = '',
-    className,
     fullWidth = false,
     inputProps = {},
     disabled = false,
     onChange,
     value = '',
-    color = 'primary',
     error = false,
     helperText = '',
+    align = 'left',
     startAdornment,
     endAdornment,
     placeholder,
     classes,
   } = props
 
-  const rootClassName = joinClassNames(
-    styles.root,
-    styles[`size_${size}`],
-    styles[`color_${error ? 'error' : color}`],
-    fullWidth ? styles.full_width : null,
-    disabled ? styles.disabled : null,
-    className,
-    classes?.root
-  )
-
-  const wrapperClassName = joinClassNames(
-    styles[`border_outlined`],
-    styles.inputFieldWrapper,
-    classes?.wrapper
-  )
-
-  const inputClassName = joinClassNames(classes?.input, styles.input)
-
-  const _onChange = disabled === false ? onChange : () => null
-
   return (
-    <div className={rootClassName}>
-      {label}
-      <div className={wrapperClassName}>
+    <Box
+      className={joinClassNames(
+        fullWidth ? stylesFunction({ width: 100 }) : '',
+        disabled ? styles.disabled : '',
+        classes?.root
+      )}
+    >
+      {label && (
+        <Typography Component="p" className={stylesFunction({ mb: 4 })}>
+          {label ?? ''}
+        </Typography>
+      )}
+      <div
+        className={joinClassNames(
+          stylesFunction({
+            pl: startAdornment ? 12 : 0,
+            pr: endAdornment ? 12 : 0,
+            border: 1,
+            fontSize: 14,
+            borderWidth: 2,
+            borderRadius: 8,
+            borderColor: 'neutral-300',
+            display: 'flex',
+            alignItems: 'center',
+          }),
+          classes?.wrapper
+        )}
+      >
         {startAdornment && startAdornment}
-        <div className={wrapperClassName}>
+        <div
+          className={joinClassNames(
+            stylesFunction({
+              py: 8,
+              pl: startAdornment ? 8 : 12,
+              pr: endAdornment ? 8 : 12,
+            }),
+            classes?.inputContainer
+          )}
+        >
           <input
+            defaultValue={value}
             value={onChange ? value : undefined}
-            className={inputClassName}
+            className={joinClassNames(
+              classes?.input,
+              styles.input,
+              align === 'right' ? styles.alignRight : null
+            )}
             disabled={disabled}
-            onChange={_onChange}
+            onChange={disabled === false ? onChange : () => null}
             placeholder={placeholder}
             {...inputProps}
           />
@@ -143,8 +110,18 @@ export const InputField = (props: InputFieldProps) => {
         {endAdornment && endAdornment}
       </div>
       {helperText && (
-        <p className={error ? styles.helperTextColorError : ''}>{helperText}</p>
+        <Typography
+          className={joinClassNames(
+            stylesFunction({
+              textColor: error ? 'error-400' : 'neutral-1000',
+              fontSize: 12,
+            }),
+            classes?.helperText
+          )}
+        >
+          {helperText}
+        </Typography>
       )}
-    </div>
+    </Box>
   )
 }
