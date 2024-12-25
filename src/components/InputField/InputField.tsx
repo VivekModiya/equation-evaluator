@@ -1,4 +1,4 @@
-import { stylesFunction } from '../../tokens'
+import { stylesFunction, StylesFunctionProps } from '../../tokens'
 import { joinClassNames } from '../../utils/joinClassNames'
 import { Box } from '../Box/Box'
 import { Typography } from '../Typography'
@@ -15,7 +15,7 @@ interface InputProps
 
 export interface InputFieldProps {
   label?: React.ReactNode
-  value?: string
+  value?: string | number
   disabled?: boolean
   fullWidth?: boolean
   onChange?: React.ChangeEventHandler<HTMLInputElement>
@@ -33,6 +33,7 @@ export interface InputFieldProps {
     input?: string
     helperText?: string
   }
+  stylesObject?: StylesFunctionProps
   align?: 'left' | 'right'
 }
 
@@ -50,6 +51,7 @@ export const InputField = (props: InputFieldProps) => {
     startAdornment,
     endAdornment,
     placeholder,
+    stylesObject,
     classes,
   } = props
 
@@ -58,7 +60,8 @@ export const InputField = (props: InputFieldProps) => {
       className={joinClassNames(
         fullWidth ? stylesFunction({ width: 100 }) : '',
         disabled ? styles.disabled : '',
-        classes?.root
+        classes?.root,
+        stylesFunction(stylesObject)
       )}
     >
       {label && (
@@ -73,9 +76,8 @@ export const InputField = (props: InputFieldProps) => {
             pr: endAdornment ? 12 : 0,
             border: 1,
             fontSize: 14,
-            borderWidth: 2,
             borderRadius: 8,
-            borderColor: 'neutral-300',
+            borderColor: 'neutral-400',
             display: 'flex',
             alignItems: 'center',
           }),
@@ -95,7 +97,7 @@ export const InputField = (props: InputFieldProps) => {
         >
           <input
             defaultValue={value}
-            value={onChange ? value : undefined}
+            value={value}
             className={joinClassNames(
               classes?.input,
               styles.input,

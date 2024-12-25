@@ -5,12 +5,12 @@ import { joinClassNames } from '../../utils'
 export interface BackgroundProps extends BoxProps {}
 
 export const Background = (props: BackgroundProps) => {
-  const { className, ...other } = props
+  const { className, stylesObject, ...other } = props
 
   return (
     <Box
-      className={joinClassNames(className, styles.dotedBackground)}
       {...other}
+      className={joinClassNames(className, styles.dotedBackground)}
     />
   )
 }

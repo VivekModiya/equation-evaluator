@@ -15,7 +15,7 @@ export const OutputBox = (props: InputBoxProps) => {
           stylesObject={{
             borderRight: 1,
             height: 100,
-            py: 12,
+            py: 16,
             pr: 12,
             borderColor: 'success-200',
           }}
@@ -39,7 +39,7 @@ export const OutputBox = (props: InputBoxProps) => {
           styles.root
         ),
         input: stylesFunction({
-          textWeight: 'demi',
+          textWeight: 'bold',
           fontSize: 16,
         }),
       }}
@@ -61,7 +61,7 @@ export const OutputBox = (props: InputBoxProps) => {
         </Typography>
       }
       align="right"
-      inputProps={{ readOnly: true }}
+      // inputProps={{ readOnly: true }}
       {...other}
     />
   )

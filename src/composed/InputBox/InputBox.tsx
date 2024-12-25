@@ -14,7 +14,7 @@ export const InputBox = (props: InputBoxProps) => {
           stylesObject={{
             borderLeft: 1,
             height: 100,
-            py: 12,
+            py: 16,
             pl: 12,
             borderColor: 'warning-100',
           }}
@@ -37,7 +37,7 @@ export const InputBox = (props: InputBoxProps) => {
           styles.root
         ),
         input: stylesFunction({
-          textWeight: 'demi',
+          textWeight: 'bold',
           fontSize: 16,
         }),
       }}

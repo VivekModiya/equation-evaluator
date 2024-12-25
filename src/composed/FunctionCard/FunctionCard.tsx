@@ -8,15 +8,23 @@ import {
   SelectMenu,
   Typography,
 } from '../../components'
+import { isValidEquation } from '../../utils'
+import React from 'react'
 
 export interface FunctionCardProps {
-  inputValue: number
-  setOutputValue: React.Dispatch<React.SetStateAction<number>>
+  equation: string
+  setEquation: (val: string) => void
   title: string
 }
 
 export const FunctionCard = (props: FunctionCardProps) => {
-  const { title } = props
+  const { title, equation, setEquation } = props
+
+  const error = React.useMemo(
+    () => isValidEquation(equation) === false,
+    [equation]
+  )
+  const message = error ? 'Invalid equation' : ''
 
   return (
     <Paper
@@ -41,7 +49,14 @@ export const FunctionCard = (props: FunctionCardProps) => {
           {title}
         </Typography>
       </Box>
-      <InputField fullWidth label="Equation" />
+      <InputField
+        fullWidth
+        label="Equation"
+        value={equation}
+        error
+        helperText={message}
+        onChange={e => setEquation(e.target.value)}
+      />
       <SelectMenu
         fullWidth
         disabled
