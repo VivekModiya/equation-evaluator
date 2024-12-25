@@ -1,6 +1,7 @@
+import React from 'react'
 import { stylesFunction, StylesFunctionProps } from '../../tokens'
 import { joinClassNames } from '../../utils/joinClassNames'
-import { Box } from '../Box/Box'
+import { Box, BoxProps } from '../Box'
 import { Typography } from '../Typography'
 import styles from './index.module.scss'
 
@@ -13,7 +14,7 @@ interface InputProps
     'size'
   > {}
 
-export interface InputFieldProps {
+export interface InputFieldProps extends BoxProps {
   label?: React.ReactNode
   value?: string | number
   disabled?: boolean
@@ -37,7 +38,10 @@ export interface InputFieldProps {
   align?: 'left' | 'right'
 }
 
-export const InputField = (props: InputFieldProps) => {
+export const InputField = React.forwardRef<
+  React.RefObject<HTMLDivElement>,
+  InputFieldProps
+>((props: InputFieldProps, ref) => {
   const {
     label = '',
     fullWidth = false,
@@ -53,6 +57,7 @@ export const InputField = (props: InputFieldProps) => {
     placeholder,
     stylesObject,
     classes,
+    ...other
   } = props
 
   return (
@@ -63,6 +68,8 @@ export const InputField = (props: InputFieldProps) => {
         classes?.root,
         stylesFunction(stylesObject)
       )}
+      {...other}
+      ref={ref}
     >
       {label && (
         <Typography Component="p" className={stylesFunction({ mb: 4 })}>
@@ -80,6 +87,7 @@ export const InputField = (props: InputFieldProps) => {
             borderColor: 'neutral-400',
             display: 'flex',
             alignItems: 'center',
+            bgColor: 'neutral-0',
           }),
           classes?.wrapper
         )}
@@ -126,4 +134,4 @@ export const InputField = (props: InputFieldProps) => {
       )}
     </Box>
   )
-}
+})

@@ -3,12 +3,17 @@ import { Box, InputField, InputFieldProps, Typography } from '../../components'
 import { stylesFunction } from '../../tokens'
 import { joinClassNames } from '../../utils'
 import styles from './index.module.scss'
+import React from 'react'
 
 export interface InputBoxProps extends InputFieldProps {}
 
-export const InputBox = (props: InputBoxProps) => {
+export const InputBox = React.forwardRef<
+  React.RefObject<HTMLDivElement>,
+  InputBoxProps
+>((props, ref) => {
   return (
     <InputField
+      ref={ref}
       endAdornment={
         <Box
           stylesObject={{
@@ -61,4 +66,4 @@ export const InputBox = (props: InputBoxProps) => {
       {...props}
     />
   )
-}
+})

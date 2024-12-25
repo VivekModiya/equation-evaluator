@@ -17,7 +17,10 @@ export interface FunctionCardProps {
   title: string
 }
 
-export const FunctionCard = (props: FunctionCardProps) => {
+export const FunctionCard = React.forwardRef<
+  React.MutableRefObject<HTMLDivElement>,
+  FunctionCardProps
+>((props: FunctionCardProps, ref) => {
   const { title, equation, setEquation } = props
 
   const error = React.useMemo(
@@ -35,6 +38,7 @@ export const FunctionCard = (props: FunctionCardProps) => {
         flexDirection: 'column',
         bgColor: 'neutral-0',
       }}
+      ref={ref}
     >
       <Box
         stylesObject={{
@@ -79,4 +83,4 @@ export const FunctionCard = (props: FunctionCardProps) => {
       </Box>
     </Paper>
   )
-}
+})

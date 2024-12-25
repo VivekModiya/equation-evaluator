@@ -1,12 +1,17 @@
-import { CircleNode } from '../NodeConnector'
-import { Box, InputField, InputFieldProps, Typography } from '../../components'
-import { stylesFunction } from '../../tokens'
-import { joinClassNames } from '../../utils'
+import React from 'react'
+
 import styles from './index.module.scss'
+import { joinClassNames } from '../../utils'
+import { CircleNode } from '../NodeConnector'
+import { stylesFunction } from '../../tokens'
+import { Box, InputField, InputFieldProps, Typography } from '../../components'
 
 export interface InputBoxProps extends InputFieldProps {}
 
-export const OutputBox = (props: InputBoxProps) => {
+export const OutputBox = React.forwardRef<
+  React.RefObject<HTMLDivElement>,
+  InputBoxProps
+>((props: InputBoxProps, ref) => {
   const { classes: _, ...other } = props
   return (
     <InputField
@@ -23,6 +28,7 @@ export const OutputBox = (props: InputBoxProps) => {
           <CircleNode />
         </Box>
       }
+      ref={ref}
       classes={{
         wrapper: stylesFunction({
           border: 1,
@@ -65,4 +71,4 @@ export const OutputBox = (props: InputBoxProps) => {
       {...other}
     />
   )
-}
+})

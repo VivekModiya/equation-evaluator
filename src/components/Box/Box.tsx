@@ -1,3 +1,4 @@
+import React from 'react'
 import { stylesFunction, StylesFunctionProps } from '../../tokens'
 import { joinClassNames } from '../../utils'
 
@@ -21,7 +22,10 @@ export interface BoxProps
     | 'h6'
 }
 
-export const Box = (props: BoxProps) => {
+export const Box = React.forwardRef<
+  React.RefObject<HTMLDivElement> | undefined,
+  BoxProps
+>((props, ref) => {
   const { stylesObject, className, Component = 'div', ...other } = props
 
   const _Component = [
@@ -42,5 +46,6 @@ export const Box = (props: BoxProps) => {
 
   const _className = joinClassNames(stylesFunction(stylesObject), className)
 
-  return <_Component className={_className} {...other} />
-}
+  // @ts-ignore
+  return <_Component ref={ref} className={_className} {...other} />
+})

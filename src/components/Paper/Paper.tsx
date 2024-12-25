@@ -1,3 +1,4 @@
+import React from 'react'
 import { stylesFunction, StylesFunctionProps } from '../../tokens'
 import { joinClassNames } from '../../utils'
 import { Box } from '../Box'
@@ -15,7 +16,10 @@ export interface PaperProps
   stylesObject?: StylesFunctionProps
 }
 
-export const Paper = (props: PaperProps) => {
+export const Paper = React.forwardRef<
+  React.MutableRefObject<HTMLDivElement>,
+  PaperProps
+>((props: PaperProps, ref) => {
   const {
     borderRadius = 16,
     elevation = true,
@@ -37,8 +41,8 @@ export const Paper = (props: PaperProps) => {
   )
 
   return (
-    <Box className={rootClassName} {...other}>
+    <Box className={rootClassName} {...other} ref={ref}>
       {children}
     </Box>
   )
-}
+})
