@@ -60,8 +60,6 @@ export const InputField = React.forwardRef<
     ...other
   } = props
 
-  console.log({ error })
-
   return (
     <Box
       className={joinClassNames(

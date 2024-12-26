@@ -16,8 +16,7 @@ export const getCubicBezierPath = (
   const endRect = endNodeRef?.current?.getBoundingClientRect()
 
   if (!startRect || !endRect) {
-    console.warn('One or both of the node references are invalid.')
-    return null
+    return ''
   }
 
   // Calculate start and end positions (center of nodes)
