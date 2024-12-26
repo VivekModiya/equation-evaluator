@@ -65,7 +65,7 @@ export const FunctionCard = React.forwardRef<
         fullWidth
         label="Equation"
         value={equation}
-        error
+        error={error}
         helperText={message}
         onChange={e => setEquation(e.target.value)}
       />

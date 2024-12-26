@@ -77,7 +77,7 @@ export const evaluateEquation = (equation: string, variableValue: number) => {
       }
     })
 
-    return Number(equationStack.top())
+    return normalizedValue(equationStack.top())
   }
   return 0
 }

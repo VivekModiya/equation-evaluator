@@ -15,7 +15,9 @@ export const splitStringWithOperators = (str: string) => {
       lastItem = `${lastItem}${val}`
     }
   }
-  splitArray.push(lastItem)
+  if (lastItem !== '') {
+    splitArray.push(lastItem)
+  }
 
   // Generalizing the array by splitting 2x into 2 * x
   return generalizeEquationValues(splitArray)

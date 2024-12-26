@@ -60,6 +60,8 @@ export const InputField = React.forwardRef<
     ...other
   } = props
 
+  console.log({ error })
+
   return (
     <Box
       className={joinClassNames(
@@ -84,7 +86,7 @@ export const InputField = React.forwardRef<
             border: 1,
             fontSize: 14,
             borderRadius: 8,
-            borderColor: 'neutral-400',
+            borderColor: error ? 'error-500' : 'neutral-400',
             display: 'flex',
             alignItems: 'center',
           }),
@@ -122,7 +124,7 @@ export const InputField = React.forwardRef<
         <Typography
           className={joinClassNames(
             stylesFunction({
-              textColor: error ? 'error-400' : 'neutral-1000',
+              textColor: error ? 'error-500' : 'neutral-1000',
               fontSize: 12,
             }),
             classes?.helperText
