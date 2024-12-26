@@ -1,50 +1,93 @@
-# React + TypeScript + Vite
+# 🌟 Equation evaluator 🚀
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Welcome to the **Equation evaluator**, built using **Vite** ⚡ and **React** 🎨! This project showcases the nested calculation of algebraic equations with the use of dynamic cards 🃏 and interactive connection lines 🔗.
 
-Currently, two official plugins are available:
+## 📸 UI Preview
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+![UI Preview](./UI.png)
 
-## Expanding the ESLint configuration
+## ✨ Features
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- 🎴 **Dynamic Cards**: Add, edit, and update cards effortlessly.
+- 🔗 **Interactive Connection Lines**: Connect cards dynamically with visually engaging lines.
+- 💻 **Responsive Design**: Ensures compatibility across various screen sizes.
+- ⚡ **Powered by Vite**: For blazing-fast development and optimized builds.
+- 🎨 **Modern React**: Leveraging hooks and functional components for seamless state management.
 
-- Configure the top-level `parserOptions` property like this:
+## 🛠️ Setup & Installation
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+Follow these steps to get started:
+
+1. **Clone the repository**:
+
+   ```bash
+   git clone https://github.com/VivekModiya/equation-evaluator.git
+   ```
+
+2. **Navigate to the project directory**:
+
+   ```bash
+   cd equation-evaluator
+   ```
+
+3. **Install dependencies**:
+
+   ```bash
+   yarn install
+   ```
+
+4. **Run the development server**:
+
+   ```bash
+   yarn
+   ```
+
+5. **Open in your browser**:
+   Visit [http://localhost:<port_provided_in_console>](http://localhost:3000) 🌐 to see the app in action.
+
+## 🖋️ Usage
+
+- **Initial Value**: Enter an initial value to start the calculations.
+- **Add Cards**: Use the interface to dynamically add cards. (Partially supported as adding card is not in scope)
+- **Edit Equations**: Modify card equations to update results.
+
+## 📂 Project Structure
+
+```
+project-root
+├── src
+│   ├── app              # Email entry point of the UI
+│   ├── assets           # Images, svg, etc.
+│   ├── components       # Reusable components like InputBox, OutputBox, etc.
+│   ├── utils            # Helper functions for equation evaluation & ordering
+│   ├── constants        # Default values & app-wide constants
+│   ├── composed         # Composed component made up of customizing multiple base components
+│   ├── tokens           # Tokens to standerize the different value
+│   ├── constants        # Default values & app-wide constants
+│   └── styles           # SCSS modules for styling
+├── public               # Static assets
+└── vite.config.js       # Vite configuration
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+## 🚀 Technologies Used
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+- **Frontend**: React ⚛️, TypeScript 🟦
+- **Bundler**: Vite ⚡
+- **Styling**: SCSS 🎨
+- **Utilities**: JavaScript ES6+ ✨
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+## 🤝 Contributing
+
+We welcome contributions! 🛠️ Feel free to fork the repository, create a feature branch, and submit a pull request. Here are some ways to contribute:
+
+- Report bugs 🐞
+- Suggest features 🌟
+- Improve documentation 📚
+
+## 🌍 License
+
+This project is licensed under the MIT License 📜. Feel free to use and modify the code.
+
+---
+
+Made with ❤️ and ☕ by Vivek Modiya
